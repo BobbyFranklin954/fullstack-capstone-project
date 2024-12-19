@@ -1,19 +1,112 @@
-/* Task 1: Style the body */
+/* Base Styles */
 body {
-    /* insert code here */
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #9fcad6, #87b8c4);
+    /* Light teal gradient */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Task 2: Create a pseudo-element for the background and blur */
 body::before {
-    /* insert code here */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    /* Light overlay for readability */
+    backdrop-filter: blur(5px);
+    /* Subtle blur effect */
+    z-index: -1;
 }
 
-/* Task 3: Style the content area */
+/* Content Area */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .content {
-    /* insert code here */
+    max-width: 800px;
+    margin: 100px auto 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    text-align: center;
 }
 
-/* Task 4: Add styles for headings, paragraphs, and buttons */
-h1, h2, .lead, .btn-primary {
-    /* insert code here */
+/* Headings, Paragraphs, and Buttons */
+.main-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subheading {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 10px 0;
+    color: #555;
+}
+
+.quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin: 20px 0;
+    color: #444;
+}
+
+/* Shared styles for Task 4 */
+h1,
+h2,
+.lead {
+    font-family: 'Montserrat', sans-serif;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.btn-get-started {
+    background-color: #51888f;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-get-started:hover {
+    background-color: #72a5af;
+    /* Lighter teal hover color */
+    cursor: pointer;
+}
+
+/* Task 4 - .btn-primary reuse */
+.btn-primary {
+    background-color: #51888f;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #72a5af;
+    /* Hover effect */
+    transform: scale(1.05);
+    cursor: pointer;
 }
