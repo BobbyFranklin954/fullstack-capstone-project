@@ -1,0 +1,26 @@
+{
+  "name": "gift-link",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "NODE_ENV=development node app.js",
+    "start:test": "NODE_ENV=test node app.js",
+    "start:prod": "NODE_ENV=production node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BobbyFranklin954/fullstack-capstone-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BobbyFranklin954/fullstack-capstone-project/issues"
+  },
+  "homepage": "https://github.com/BobbyFranklin954/fullstack-capstone-project#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
