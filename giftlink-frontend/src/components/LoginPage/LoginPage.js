@@ -15,8 +15,24 @@ function LoginPage() {
         }));
     };
 
-    const handleLogin = () => {
-        console.log('Logging in with:', formData);
+    const handleLogin = async () => {
+        try {
+            // Simulate API interaction
+            const response = await fetch('http://localhost:3060/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData), // Send the form data
+            });
+
+            if (!response.ok) {
+                throw new Error(`Login failed: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('User logged in successfully:', data);
+        } catch (error) {
+            console.error('Error logging in:', error);
+        }
     };
 
     return (

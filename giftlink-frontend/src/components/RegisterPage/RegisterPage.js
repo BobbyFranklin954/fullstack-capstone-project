@@ -17,8 +17,24 @@ function RegisterPage() {
         }));
     };
 
-    const handleRegister = () => {
-        console.log('Registering user:', formData);
+    const handleRegister = async () => {
+        try {
+            // Simulate API interaction
+            const response = await fetch('http://localhost:3060/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData), // Send the form data
+            });
+
+            if (!response.ok) {
+                throw new Error(`Registration failed: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('User registered successfully:', data);
+        } catch (error) {
+            console.error('Error registering user:', error);
+        }
     };
 
     return (
