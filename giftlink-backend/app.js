@@ -1,8 +1,11 @@
 /*jshint esversion: 8 */
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const pinoLogger = require('./logger');
+
+const environment = process.env.NODE_ENV || 'development'; // Fallback to 'development' if NODE_ENV is not set
+require('dotenv').config({ path: `.env.${environment}.local` });
+
 
 const connectToDatabase = require('./models/db');
 const { loadData } = require("./util/import-mongo/index");
@@ -22,11 +25,11 @@ app.use(express.json());
 
 // Route files
 // Import the giftRoutes and store in a constant called giftroutes
-const giftroutes = require('./giftlink-backend/routes/giftRoutes.js')
+const giftroutes = require('./routes/giftRoutes')
 
 // Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
 // Import the searchRoutes and store in a constant called searchRoutes
-const searchRoutes = require('./giftlink-backend/routes/searchRoutes.js');
+const searchRoutes = require('./routes/searchRoutes');
 
 
 const pinoHttp = require('pino-http');
