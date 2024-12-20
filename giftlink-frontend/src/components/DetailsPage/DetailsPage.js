@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { urlConfig } from '../../config';
 import './DetailsPage.css';
 
 function DetailsPage() {
@@ -10,11 +11,11 @@ function DetailsPage() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const authenticationToken = sessionStorage.getItem('auth-token');
-        if (!authenticationToken) {
-            // Task 1: Check for authentication and redirect
-            navigate('/login'); // Redirect to login if no token
-        }
+        // const authenticationToken = sessionStorage.getItem('auth-token');
+        // if (!authenticationToken) {
+        //     // Task 1: Check for authentication and redirect
+        //     navigate('/login'); // Redirect to login if no token
+        // }
 
         // get the gift to be rendered on the details page
         const fetchGift = async () => {

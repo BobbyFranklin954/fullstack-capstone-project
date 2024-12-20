@@ -29,6 +29,7 @@ router.get('/:id', async (req, res) => {
 
         // Find the gift by ID
         const gift = await collection.findOne({ _id: new ObjectId(id) });
+        // console.log(gift);
 
         if (!gift) {
             return res.status(404).send('Gift not found');

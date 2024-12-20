@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { urlConfig } from '../../config';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -18,7 +19,7 @@ function LoginPage() {
     const handleLogin = async () => {
         try {
             // Simulate API interaction
-            const response = await fetch('http://localhost:3060/api/login', {
+            const response = await fetch(`${urlConfig.backendUrl}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData), // Send the form data

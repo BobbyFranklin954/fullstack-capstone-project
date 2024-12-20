@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { urlConfig } from '../../config';
 import './RegisterPage.css';
 
 function RegisterPage() {
@@ -20,7 +21,7 @@ function RegisterPage() {
     const handleRegister = async () => {
         try {
             // Simulate API interaction
-            const response = await fetch('http://localhost:3060/api/register', {
+            const response = await fetch(`${urlConfig.backendUrl}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData), // Send the form data

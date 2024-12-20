@@ -10,7 +10,7 @@ function MainPage() {
     useEffect(() => {
         const fetchGifts = async () => {
             try {
-                const response = await fetch(`${urlConfig.apiUrl}/gifts`);
+                const response = await fetch(`${urlConfig.backendUrl}/gifts`);
                 console.log('Response:', response); // Log response object
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -28,7 +28,7 @@ function MainPage() {
 
     // Navigate to details page
     const goToDetailsPage = (giftId) => {
-        navigate(`/gift-details/${giftId}`);
+        navigate(`/gifts/${giftId}`);
     };
 
     // Format timestamp
