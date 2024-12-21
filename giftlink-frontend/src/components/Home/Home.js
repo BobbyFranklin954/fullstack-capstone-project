@@ -12,10 +12,10 @@ export default function Home() {
                 <p className="subheading">Your personalized gift exchange made easy</p>
 
                 {/* Inspirational Quote */}
-                <p className="quote">"The best gifts come from the heart, not the store."</p>
+                <p className="quote lead">"The best gifts come from the heart, not the store."</p>
 
                 {/* Get Started Button */}
-                <a href="/get-started" className="btn btn-get-started">
+                <a href="/get-started" className="btn-get-started">
                     Get Started
                 </a>
             </div>

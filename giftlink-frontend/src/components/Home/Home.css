@@ -73,22 +73,27 @@ h2,
     margin-bottom: 20px;
 }
 
+/* Default button styling */
 .btn-get-started {
-    background-color: #51888f;
-    border: none;
-    color: white;
     padding: 10px 20px;
     font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    /* Default text color is white for better contrast */
+    background-color: #4CAF50;
+    /* Green background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Hover effect: Invert colors */
 .btn-get-started:hover {
-    background-color: #72a5af;
-    /* Lighter teal hover color */
-    cursor: pointer;
+    background-color: #3e8e41;
+    /* Darker green on hover */
+    color: #9dc59e;
+    /* Keep the text white on hover */
 }
 
 /* Task 4 - .btn-primary reuse */
