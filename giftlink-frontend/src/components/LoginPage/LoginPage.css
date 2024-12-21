@@ -59,3 +59,16 @@ input:focus {
 .btn-login:hover {
     background-color: #72a5af;
 }
+
+/* Register link styles */
+.register-link {
+    color: #51888f;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-link:hover {
+    color: #72a5af;
+    text-decoration: underline;
+}

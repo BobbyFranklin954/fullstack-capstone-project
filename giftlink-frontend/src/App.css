@@ -58,21 +58,51 @@ body,
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  /* Ensures cards wrap to the next row */
-  justify-content: space-evenly;
-  /* Equal spacing between cards */
+  row-gap: 20px;
+  /* Space between rows */
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
-  /* Stack content vertically */
   justify-content: space-between;
-  /* Space out content evenly */
   height: 100%;
-  /* Ensure consistent height */
+  /* Match the height of the container */
+  max-height: 350px;
+  /* Optional: Set a maximum height for consistency */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.product-card img {
+  height: 150px;
+  /* Fixed height for images */
+  object-fit: cover;
+  /* Keep the image proportional */
+  border-radius: 10px 10px 0 0;
+  /* Rounded top corners */
+}
+
+.product-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  /* Make card body fill the remaining space */
+}
+
+.product-card .btn {
+  align-self: stretch;
+  /* Make the button fill the width of the card */
+  margin-top: 10px;
+  /* Add spacing above the button */
+  background-color: #51888f;
+  border: none;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .product-card:hover {
@@ -82,6 +112,10 @@ body,
   /* Smooth animation */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   /* Stronger shadow */
+}
+
+.product-card .btn:hover {
+  background-color: #72a5af;
 }
 
 .image-placeholder {

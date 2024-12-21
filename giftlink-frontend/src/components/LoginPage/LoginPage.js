@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { urlConfig } from '../../config';
+import { useNavigate, NavLink } from 'react-router-dom'; // Added NavLink and useNavigate
 import './LoginPage.css';
 
 function LoginPage() {
@@ -7,6 +8,8 @@ function LoginPage() {
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate(); // For navigation after successful login
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,7 +21,6 @@ function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            // Simulate API interaction
             const response = await fetch(`${urlConfig.backendUrl}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -31,6 +33,10 @@ function LoginPage() {
 
             const data = await response.json();
             console.log('User logged in successfully:', data);
+
+            // Simulate storing auth token and redirecting
+            sessionStorage.setItem('auth-token', data.token || 'mock-token');
+            navigate('/'); // Redirect to the home page after login
         } catch (error) {
             console.error('Error logging in:', error);
         }
@@ -68,6 +74,12 @@ function LoginPage() {
                     Login
                 </button>
             </form>
+            <p className="text-center mt-3">
+                Don't have an account?{' '}
+                <NavLink to="/register" className="register-link">
+                    Register Here
+                </NavLink>
+            </p>
         </div>
     );
 }

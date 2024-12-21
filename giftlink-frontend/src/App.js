@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import DetailsPage from './components/DetailsPage/DetailsPage';
+import SearchPage from './components/SearchPage/SearchPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/gifts/:productId" element={<DetailsPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </>
   );

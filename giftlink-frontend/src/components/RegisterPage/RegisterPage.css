@@ -1,3 +1,4 @@
+/* Register container */
 .register-container {
     max-width: 400px;
     margin: 50px auto;
@@ -58,4 +59,17 @@ input:focus {
 
 .btn-register:hover {
     background-color: #72a5af;
+}
+
+/* Login link */
+.login-link {
+    color: #51888f;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #72a5af;
+    text-decoration: underline;
 }

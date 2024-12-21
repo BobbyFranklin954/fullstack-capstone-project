@@ -25,8 +25,11 @@ router.get('/', async (req, res, next) => {
         if (req.query.condition) {
             query.condition = req.query.condition; // Exact match for condition
         }
-        if (req.query.age_years) {
-            query.age_years = { $lte: parseInt(req.query.age_years) };
+        if (req.query.age_min && req.query.age_max) {
+            query.age_years = {
+                $gte: parseInt(req.query.age_min),
+                $lte: parseInt(req.query.age_max),
+            };
         }
 
         // Task 4: Fetch filtered gifts using the find(query) method. Make sure to use await and store the result in the `gifts` constant

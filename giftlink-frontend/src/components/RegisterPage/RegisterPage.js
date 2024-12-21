@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { urlConfig } from '../../config';
+import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 
 function RegisterPage() {
@@ -9,6 +10,8 @@ function RegisterPage() {
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,11 +23,10 @@ function RegisterPage() {
 
     const handleRegister = async () => {
         try {
-            // Simulate API interaction
             const response = await fetch(`${urlConfig.backendUrl}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData), // Send the form data
+                body: JSON.stringify(formData),
             });
 
             if (!response.ok) {
@@ -33,8 +35,11 @@ function RegisterPage() {
 
             const data = await response.json();
             console.log('User registered successfully:', data);
+
+            // Redirect to login page
+            navigate('/login');
         } catch (error) {
-            console.error('Error registering user:', error);
+            console.error('Error registering:', error);
         }
     };
 
@@ -86,7 +91,7 @@ function RegisterPage() {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        placeholder="Enter your password"
+                        placeholder="Create a password"
                         required
                     />
                 </div>
@@ -94,6 +99,12 @@ function RegisterPage() {
                     Register
                 </button>
             </form>
+            <p className="text-center mt-3">
+                Already have an account?{' '}
+                <a href="/login" className="login-link">
+                    Login Here
+                </a>
+            </p>
         </div>
     );
 }
