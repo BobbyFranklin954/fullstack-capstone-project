@@ -62,9 +62,8 @@ function MainPage() {
 
                                 {/* Display formatted date */}
                                 <p className="card-text text-muted">
-                                    Added on: {formatDate(gift.timestamp)}
+                                    Added on: {gift.date_added ? new Date(gift.date_added * 1000).toLocaleDateString() : 'N/A'}
                                 </p>
-
                                 {/* Display condition */}
                                 <p className={`card-text ${getConditionClass(gift.condition)}`}>
                                     {gift.condition}
