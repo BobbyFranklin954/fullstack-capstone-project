@@ -127,7 +127,7 @@ function DetailsPage() {
                     <p><strong>Category:</strong> {gift.category || 'Not specified'}</p>
                     <p><strong>Condition:</strong> {gift.condition}</p>
                     <p><strong>Date Added:</strong> {gift.date_added ? new Date(gift.date_added * 1000).toLocaleDateString() : 'N/A'}</p>
-                    <p><strong>Age (Years):</strong> {gift.age || 'N/A'}</p>
+                    <p><strong>Age (Years):</strong> {gift.age_years || 'N/A'}</p>
                     <p><strong>Description:</strong> {gift.description || 'No description available'}</p>
                 </div>
             </div>
