@@ -52,7 +52,7 @@ function MainPage() {
                         <div className="card product-card h-100">
                             {/* Display gift image or placeholder */}
                             <img
-                                src={gift.image || '/static/background-stars.jpg'}
+                                src={gift.image || '/static/placeholder.webp'}
                                 className="card-img-top"
                                 alt={gift.name}
                             />
