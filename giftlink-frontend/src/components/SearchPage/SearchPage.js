@@ -136,6 +136,7 @@ function SearchPage() {
                                     className="age-range-slider"
                                     min={0}
                                     max={10}
+                                    step={0.25}
                                     value={ageRange[1]}
                                     onChange={handleAgeRangeChange}
                                 />
@@ -173,9 +174,10 @@ function SearchPage() {
                                     <div key={result._id} className="col-md-4 mb-4">
                                         <div className="card search-results-card">
                                             <img
-                                                src={result.image || '/static/placeholder.png'}
+                                                src={result.image || '/static/background - stars.jpg'}
                                                 className="card-img-top"
                                                 alt={result.name}
+                                                onError={(e) => console.error('Image failed to load:', e.target.src)}
                                             />
                                             <div className="card-body">
                                                 <h5 className="card-title">{result.name}</h5>

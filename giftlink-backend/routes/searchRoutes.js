@@ -27,8 +27,8 @@ router.get('/', async (req, res, next) => {
         }
         if (req.query.age_min && req.query.age_max) {
             query.age_years = {
-                $gte: parseInt(req.query.age_min),
-                $lte: parseInt(req.query.age_max),
+                $gte: parseFloat(req.query.age_min),
+                $lte: parseFloat(req.query.age_max),
             };
         }
 
