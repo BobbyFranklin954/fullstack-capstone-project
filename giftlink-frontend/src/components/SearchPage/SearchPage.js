@@ -13,6 +13,7 @@ function SearchPage() {
     const [searchResults, setSearchResults] = useState([]); // Results from the API
     const [selectedCategory, setSelectedCategory] = useState(''); // Selected category filter
     const [selectedCondition, setSelectedCondition] = useState(''); // Selected condition filter
+    const [hasSearched, setHasSearched] = useState(false); // Track if search has been performed
 
 
     const categories = ['Living', 'Bedroom', 'Bathroom', 'Kitchen', 'Office'];
@@ -42,6 +43,7 @@ function SearchPage() {
 
     // Task 2. Fetch search results from the API based on user inputs.
     const handleSearch = async () => {
+        setHasSearched(true);
         try {
             const params = new URLSearchParams();
 
@@ -168,13 +170,19 @@ function SearchPage() {
                     </button>
                     {/*Task 5: Display search results and handle empty results with a message. */}
                     <div className="search-results-section mt-4">
-                        {searchResults.length > 0 ? (
+                        {hasSearched && searchResults.length === 0 && (
+                            <div className="alert alert-warning text-center" role="alert">
+                                No results found. Try adjusting your filters.
+                            </div>
+                        )}
+
+                        {searchResults.length > 0 && (
                             <div className="row">
                                 {searchResults.map((result) => (
                                     <div key={result._id} className="col-md-4 mb-4">
                                         <div className="card search-results-card">
                                             <img
-                                                src={result.image || '/static/background - stars.jpg'}
+                                                src={result.image || '/static/placeholder.webp'}
                                                 className="card-img-top"
                                                 alt={result.name}
                                                 onError={(e) => console.error('Image failed to load:', e.target.src)}
@@ -200,10 +208,6 @@ function SearchPage() {
                                         </div>
                                     </div>
                                 ))}
-                            </div>
-                        ) : (
-                            <div className="alert alert-warning text-center" role="alert">
-                                No results found. Try adjusting your filters.
                             </div>
                         )}
                     </div>
