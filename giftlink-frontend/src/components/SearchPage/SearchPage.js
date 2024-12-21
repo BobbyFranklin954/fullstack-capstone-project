@@ -78,11 +78,15 @@ function SearchPage() {
     };
 
     const navigate = useNavigate();
-
     const goToDetailsPage = (productId) => {
         // Task 6. Enable navigation to the details page of a selected gift.
         navigate(`/gifts/${productId}`);
-
+    };
+    // Handle 'Enter' key press to trigger search
+    const handleEnterKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
     };
 
 
@@ -158,6 +162,11 @@ function SearchPage() {
                             placeholder="Enter gift name"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleSearch();
+                                }
+                            }}
                         />
                     </div>
                     {/* Task 8: Implement search button with onClick event to trigger search:*/}
