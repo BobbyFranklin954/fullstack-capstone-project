@@ -1,4 +1,4 @@
-name: 'CI/CD'
+name: "CI/CD"
 
 on:
   push:
@@ -12,52 +12,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
-    - name: Install ESLint
-      run: npm install --save-dev
+      - name: Install ESLint (Version 7.3x)
+        run: npm install eslint@7 eslint-plugin-react --save-dev
 
-    - name: Check Node.js version
-      run: node --version
+      - name: Check Node.js version
+        run: node --version
 
-    - name: Run Linter
-      run: |
-        npx eslint ./giftlink-frontend/**/*.js
-        echo "Linted all the js files successfully"
+      - name: Run Linter
+        run: |
+          npx eslint ./giftlink-frontend/**/*.js
+          echo "Linted all the js files successfully"
 
   client_build:
     name: Build client
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
 
-    - name: Create .env File
-      run: |
-        echo "REACT_APP_API_URL=https://your-api-url" > giftlink-frontend/.env
+      - name: Create .env File
+        run: |
+          echo "REACT_APP_API_URL=https://your-api-url" > giftlink-frontend/.env
 
-    - name: Install Dependencies
-      run: |
-        cd giftlink-frontend
-        npm install
+      - name: Install Dependencies
+        run: |
+          cd giftlink-frontend
+          npm install
 
-    - name: Run build
-      run: |
-        cd giftlink-frontend
-        npm run build
+      - name: Run build
+        run: |
+          cd giftlink-frontend
+          npm run build
 
-    - name: Display Logs on Failure
-      if: failure()
-      run: cat /home/runner/.npm/_logs/*.log
+      - name: Display Logs on Failure
+        if: failure()
+        run: cat /home/runner/.npm/_logs/*.log
