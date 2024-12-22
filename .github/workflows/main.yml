@@ -20,8 +20,14 @@ jobs:
       with:
         node-version: 14
 
+    - name: Check Node.js version
+      run: node --version
+
     - name: Install ESLint
       run: npm install eslint --save-dev
+
+    - name: Check ESLint version
+      run: npx eslint --version
 
     - name: Run Linter
       run: |
@@ -40,6 +46,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 14
+
+    - name: Check Node.js version
+      run: node --version
 
     - name: Create .env File
       run: |
