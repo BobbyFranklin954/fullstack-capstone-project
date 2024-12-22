@@ -20,12 +20,12 @@ jobs:
       with:
         node-version: 14
 
-    - name: Install JSHint
-      run: npm install jshint --global
+    - name: Install ESLint
+      run: npm install eslint --save-dev
 
     - name: Run Linter
       run: |
-        find ./giftlink-backend -name "*.js" -exec jshint {} +
+        npx eslint ./giftlink-backend/**/*.js
         echo "Linted all the js files successfully"
 
   client_build:
