@@ -79,4 +79,53 @@ router.post('/register', async (req, res) => {
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+router.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Step 1: Validate input
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password are required' });
+        }
+
+        // Step 2: Connect to MongoDB
+        const db = await connectToDatabase();
+        const collection = db.collection('users');
+
+        // Fetch user details from the database
+        const user = await collection.findOne({ email });
+
+        // Check if user exists
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Step 3: Compare passwords
+        const isPasswordValid = await bcryptjs.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid password' });
+        }
+
+        // Step 4: Generate JWT
+        const authToken = jwt.sign(
+            { userId: user._id, email: user.email },
+            jwtSecret,
+            { expiresIn: '1h' } // Token expires in 1 hour
+        );
+
+        // Step 5: Respond to client
+        logger.info(`User logged in successfully: ${user.email}`);
+        res.status(200).json({
+            message: 'Login successful',
+            email: user.email,
+            firstName: user.firstName,
+            authToken,
+        });
+    } catch (error) {
+        logger.error('Error during login:', error.message);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 module.exports = router;
