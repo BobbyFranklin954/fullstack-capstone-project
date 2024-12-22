@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Linter
       run: |
-        npx eslint ./giftlink-backend/**/*.js
+        npx eslint ./giftlink-frontend/**/*.js
         echo "Linted all the js files successfully"
 
   client_build:
