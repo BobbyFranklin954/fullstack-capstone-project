@@ -1,13 +1,32 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'; // Import NavLink
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate, Link } from 'react-router-dom'; // Import Link
+import { useAppContext } from '../../context/AuthContext';
 
 export default function Navbar() {
+    const { isLoggedIn, setIsLoggedIn, userName, setUserName } = useAppContext();
     const navigate = useNavigate();
-    const isLoggedIn = Boolean(sessionStorage.getItem('auth-token'));
+
+    useEffect(() => {
+        const authTokenFromSession = sessionStorage.getItem('auth-token');
+        const nameFromSession = sessionStorage.getItem('name');
+        if (authTokenFromSession) {
+            setIsLoggedIn(true);
+            setUserName(nameFromSession || 'User');
+        } else {
+            setIsLoggedIn(false);
+            setUserName('');
+        }
+    }, [setIsLoggedIn, setUserName]);
 
     const handleLogout = () => {
-        sessionStorage.removeItem('auth-token');
-        navigate('/login');
+        sessionStorage.clear(); // Clear all session storage items
+        setIsLoggedIn(false);
+        setUserName('');
+        navigate('/app');
+    };
+
+    const profileSection = () => {
+        navigate('/app/profile');
     };
 
     return (
@@ -24,6 +43,7 @@ export default function Navbar() {
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
+
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -59,27 +79,48 @@ export default function Navbar() {
                 </ul>
                 <ul className="navbar-nav ms-auto">
                     {isLoggedIn ? (
-                        <li className="nav-item">
-                            <button
-                                className="btn btn-link nav-link"
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
-                        </li>
+                        <>
+                            <li className="nav-item">
+                                <span
+                                    className="nav-link"
+                                    style={{ color: 'black', cursor: 'pointer' }}
+                                    onClick={profileSection}
+                                >
+                                    Welcome, {userName}
+                                </span>
+                            </li>
+                            <li className="nav-item">
+                                <button className="btn btn-link nav-link" onClick={handleLogout}>
+                                    Logout
+                                </button>
+                            </li>
+                        </>
                     ) : (
-                        <li className="nav-item">
-                            <NavLink
-                                to="/login"
-                                className={({ isActive }) =>
-                                    isActive ? "nav-link active" : "nav-link"
-                                }
-                            >
-                                Login
-                            </NavLink>
-                        </li>
+                        <>
+                            <li className="nav-item">
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        isActive ? 'nav-link active login-btn' : 'nav-link login-btn'
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    to="/register"
+                                    className={({ isActive }) =>
+                                        isActive ? 'nav-link active register-btn' : 'nav-link register-btn'
+                                    }
+                                >
+                                    Register
+                                </NavLink>
+                            </li>
+                        </>
                     )}
                 </ul>
+
             </div>
         </nav>
     );
