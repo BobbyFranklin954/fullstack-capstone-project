@@ -31,14 +31,6 @@ function MainPage() {
         navigate(`/gifts/${giftId}`);
     };
 
-    // Format timestamp
-    const formatDate = (timestamp) => {
-        if (!timestamp) return 'Unknown Date'; // Handle missing timestamp
-        const date = new Date(Number(timestamp)); // Convert timestamp to number if needed
-        if (isNaN(date)) return 'Invalid Date'; // Handle invalid dates
-        return date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
-    };
-
     // Get condition class for styling
     const getConditionClass = (condition) => {
         return condition === 'New' ? 'text-success' : 'text-warning';

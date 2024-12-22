@@ -39,7 +39,7 @@ function DetailsPage() {
         // Task 3: Scroll to top on component mount
         window.scrollTo(0, 0); // Scroll to the top of the page
 
-    }, [productId]);
+    }, [navigate]);
 
 
     const handleBackClick = () => {

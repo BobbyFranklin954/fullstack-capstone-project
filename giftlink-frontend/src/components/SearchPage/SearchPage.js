@@ -82,13 +82,6 @@ function SearchPage() {
         // Task 6. Enable navigation to the details page of a selected gift.
         navigate(`/gifts/${productId}`);
     };
-    // Handle 'Enter' key press to trigger search
-    const handleEnterKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    };
-
 
 
 

@@ -97,8 +97,6 @@ const Profile = () => {
       }
 
       if (response.ok) {
-        const data = await response.json();
-
         // Update session storage and AppContext
         sessionStorage.setItem('firstName', updatedDetails.firstName);
         sessionStorage.setItem('lastName', updatedDetails.lastName);
