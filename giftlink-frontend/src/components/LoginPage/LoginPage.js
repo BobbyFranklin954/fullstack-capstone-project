@@ -108,7 +108,7 @@ function LoginPage() {
                 </button>
             </form>
             <p className="text-center mt-3">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <NavLink to="/register" className="register-link">
                     Register Here
                 </NavLink>
