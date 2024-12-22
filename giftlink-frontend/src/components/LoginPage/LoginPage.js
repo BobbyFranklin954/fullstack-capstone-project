@@ -49,12 +49,14 @@ function LoginPage() {
             // Store auth token, first name and redirecting
             sessionStorage.setItem('auth-token', data.authToken);
             sessionStorage.setItem('firstName', data.firstName);
+            sessionStorage.setItem('lastName', data.lastName);
+            sessionStorage.setItem('email', data.email);
 
             // Update global state
             setIsLoggedIn(true);
             setUserName(data.firstName);
-            // Navigate to the gifts page after login
-            navigate('/gifts');
+            // Navigate to the landing page after login
+            navigate('/');
         } catch (error) {
             console.error('Error logging in:', error);
             setErrorMessage('An unexpected error occurred. Please try again.');

@@ -46,13 +46,14 @@ function RegisterPage() {
             // Save the authentication token in sessionStorage
             sessionStorage.setItem('auth-token', data.authToken);
             sessionStorage.setItem('firstName', data.firstName);
+            sessionStorage.setItem('lastName', data.lastName);
 
             // Update global login status
             setIsLoggedIn(true);
             setUserName(data.firstName);
 
-            // Redirect to gifts page
-            navigate('/gifts');
+            // Navigate to landing page
+            navigate('/');
         } catch (error) {
             console.error('Error registering:', error);
             // Check if it's a network error or something else

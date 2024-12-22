@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, useNavigate, Link } from 'react-router-dom'; // Import Link
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AuthContext';
 
 export default function Navbar() {
@@ -8,7 +8,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const authTokenFromSession = sessionStorage.getItem('auth-token');
-        const nameFromSession = sessionStorage.getItem('name');
+        const nameFromSession = sessionStorage.getItem('firstName');
         if (authTokenFromSession) {
             setIsLoggedIn(true);
             setUserName(nameFromSession || 'User');
@@ -19,14 +19,14 @@ export default function Navbar() {
     }, [setIsLoggedIn, setUserName]);
 
     const handleLogout = () => {
-        sessionStorage.clear(); // Clear all session storage items
+        sessionStorage.clear();
         setIsLoggedIn(false);
         setUserName('');
-        navigate('/app');
+        navigate('/login');
     };
 
     const profileSection = () => {
-        navigate('/app/profile');
+        navigate('/profile');
     };
 
     return (
@@ -76,6 +76,18 @@ export default function Navbar() {
                             Search
                         </NavLink>
                     </li>
+                    {isLoggedIn && (
+                        <li className="nav-item">
+                            <NavLink
+                                to="/profile"
+                                className={({ isActive }) =>
+                                    isActive ? "nav-link active" : "nav-link"
+                                }
+                            >
+                                Profile
+                            </NavLink>
+                        </li>
+                    )}
                 </ul>
                 <ul className="navbar-nav ms-auto">
                     {isLoggedIn ? (
@@ -120,7 +132,6 @@ export default function Navbar() {
                         </>
                     )}
                 </ul>
-
             </div>
         </nav>
     );
