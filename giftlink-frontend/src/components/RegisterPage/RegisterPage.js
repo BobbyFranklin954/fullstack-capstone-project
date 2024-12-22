@@ -51,8 +51,8 @@ function RegisterPage() {
             setIsLoggedIn(true);
             setUserName(data.firstName);
 
-            // Redirect to login page
-            navigate('/');
+            // Redirect to gifts page
+            navigate('/gifts');
         } catch (error) {
             console.error('Error registering:', error);
             // Check if it's a network error or something else
