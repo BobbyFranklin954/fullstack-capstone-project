@@ -22,14 +22,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "jshint .",
-    "lint:fix": "jshint --fix ."
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parserOptions": {
+      "sourceType": "module"
+    }
   },
   "browserslist": {
     "production": [
@@ -45,8 +47,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.2",
-    "globals": "^15.14.0",
-    "jshint": "^2.13.6"
+    "globals": "^15.14.0"
   }
 }
