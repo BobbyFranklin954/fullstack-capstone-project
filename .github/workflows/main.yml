@@ -20,8 +20,8 @@ jobs:
       with:
         node-version: 14
 
-    - name: Install ESLint (Version 7.x)
-      run: npm install eslint@7 --save-dev
+    - name: Install ESLint
+      run: npm install --save-dev
 
     - name: Check Node.js version
       run: node --version
