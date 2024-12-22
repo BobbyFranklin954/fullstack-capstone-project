@@ -1,0 +1,12 @@
+{
+  "esversion": 6,
+  "node": true,
+  "browser": true,
+  "undef": true,
+  "unused": true,
+  "strict": "global",
+  "globals": {
+    "React": true,
+    "module": true
+  }
+}
