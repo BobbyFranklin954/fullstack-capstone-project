@@ -21,7 +21,7 @@ jobs:
           node-version: 14
 
       - name: Install ESLint (Version 7.3x)
-        run: npm install eslint@7 eslint-plugin-react --save-dev
+        run: npm install eslint@7 eslint-plugin-react babel-eslint --save-dev
 
       - name: Check Node.js version
         run: node --version
