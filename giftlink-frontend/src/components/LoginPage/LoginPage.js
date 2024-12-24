@@ -11,6 +11,7 @@ function LoginPage() {
     });
     const [errorMessage, setErrorMessage] = useState('');
     const { setIsLoggedIn, setUserName } = useAppContext();
+    const bearerToken = sessionStorage.getItem('bearer-token');
     const navigate = useNavigate(); // For navigation after successful login
 
     useEffect(() => {
@@ -33,7 +34,10 @@ function LoginPage() {
         try {
             const response = await fetch(`${urlConfig.backendUrl}/auth/login`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': bearerToken ? `Bearer ${bearerToken}` : '',
+                },
                 body: JSON.stringify(formData), // Send the form data
             });
 
